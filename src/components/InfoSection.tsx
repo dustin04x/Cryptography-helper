@@ -1,0 +1,265 @@
+export function InfoSection() {
+  const algorithms = [
+    {
+      name: "Caesar Cipher",
+      type: "Classical",
+      description: "A substitution cipher where each letter is shifted by a fixed number of positions in the alphabet.",
+      security: "Very Low",
+      securityColor: "text-red-400",
+      useCase: "Educational purposes, simple obfuscation",
+      example: "HELLO → KHOOR (shift of 3)",
+    },
+    {
+      name: "Vigenère Cipher",
+      type: "Classical",
+      description: "A polyalphabetic substitution cipher using a repeating keyword to determine the shift for each letter.",
+      security: "Low",
+      securityColor: "text-orange-400",
+      useCase: "Historical encryption, educational purposes",
+      example: "HELLO + KEY → RIJVS",
+    },
+    {
+      name: "Atbash Cipher",
+      type: "Classical",
+      description: "A monoalphabetic substitution cipher where A=Z, B=Y, C=X, etc. Self-inverse cipher.",
+      security: "Very Low",
+      securityColor: "text-red-400",
+      useCase: "Ancient Hebrew texts, simple puzzles",
+      example: "HELLO → SVOOL",
+    },
+    {
+      name: "ROT13 Cipher",
+      type: "Classical",
+      description: "A Caesar cipher with a fixed shift of 13. Self-inverse due to alphabet having 26 letters.",
+      security: "Very Low",
+      securityColor: "text-red-400",
+      useCase: "Text obfuscation, spoiler hiding",
+      example: "HELLO → URYYB",
+    },
+    {
+      name: "Rail Fence Cipher",
+      type: "Transposition",
+      description: "A transposition cipher that writes text in a zigzag pattern across multiple rails.",
+      security: "Low",
+      securityColor: "text-orange-400",
+      useCase: "Educational purposes, puzzle games",
+      example: "HELLO → HOELL (3 rails)",
+    },
+    {
+      name: "Playfair Cipher",
+      type: "Classical",
+      description: "A digraph substitution cipher using a 5×5 grid of letters based on a keyword.",
+      security: "Low-Medium",
+      securityColor: "text-yellow-400",
+      useCase: "Historical military communications",
+      example: "HE LL O → Encrypted pairs",
+    },
+    {
+      name: "Substitution Cipher",
+      type: "Classical",
+      description: "Each letter is replaced by another letter according to a fixed system (key alphabet).",
+      security: "Low",
+      securityColor: "text-orange-400",
+      useCase: "Cryptogram puzzles, basic encryption",
+      example: "A→Z, B→Y, C→X mapping",
+    },
+    {
+      name: "Affine Cipher",
+      type: "Mathematical",
+      description: "A mathematical cipher using the formula (ax + b) mod 26 for encryption.",
+      security: "Low",
+      securityColor: "text-orange-400",
+      useCase: "Mathematical cryptography education",
+      example: "Linear transformation of letters",
+    },
+    {
+      name: "Morse Code",
+      type: "Encoding",
+      description: "A method of encoding text using dots and dashes. Not encryption, just encoding.",
+      security: "None (Encoding Only)",
+      securityColor: "text-blue-400",
+      useCase: "Telegraph, radio communication",
+      example: "HELLO → .... . .-.. .-.. ---",
+    },
+    {
+      name: "Binary Encoding",
+      type: "Encoding",
+      description: "Converts text to 8-bit binary representation. Not encryption, just encoding.",
+      security: "None (Encoding Only)",
+      securityColor: "text-blue-400",
+      useCase: "Computer data representation",
+      example: "H → 01001000",
+    },
+    {
+      name: "AES (Advanced Encryption Standard)",
+      type: "Modern",
+      description: "A symmetric encryption algorithm using 128, 192, or 256-bit keys. Industry standard for secure encryption.",
+      security: "Very High",
+      securityColor: "text-green-400",
+      useCase: "Secure communications, file encryption, HTTPS",
+      example: "Used by governments and corporations worldwide",
+    },
+    {
+      name: "MD5 Hash",
+      type: "Hash Function",
+      description: "A cryptographic hash function producing a 128-bit hash value. Now considered cryptographically broken.",
+      security: "Broken",
+      securityColor: "text-red-400",
+      useCase: "File integrity checks (non-security critical)",
+      example: "hello → 5d41402abc4b2a76b9719d911017c592",
+    },
+    {
+      name: "SHA-1 Hash",
+      type: "Hash Function",
+      description: "A cryptographic hash function producing a 160-bit hash value. Deprecated for security applications.",
+      security: "Deprecated",
+      securityColor: "text-orange-400",
+      useCase: "Legacy systems, Git commits",
+      example: "hello → aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d",
+    },
+    {
+      name: "SHA-256 Hash",
+      type: "Hash Function",
+      description: "Part of SHA-2 family, produces 256-bit hash values. Currently secure and widely used.",
+      security: "High",
+      securityColor: "text-green-400",
+      useCase: "Digital signatures, blockchain, password storage",
+      example: "hello → 2cf24dba4f21d4288094e9b9eb8f5496e3b9b2...",
+    },
+    {
+      name: "Base64 Encoding",
+      type: "Encoding",
+      description: "A binary-to-text encoding scheme using 64 ASCII characters. Not encryption, just encoding.",
+      security: "None (Encoding Only)",
+      securityColor: "text-blue-400",
+      useCase: "Data transmission, email attachments, web APIs",
+      example: "hello → aGVsbG8=",
+    },
+  ];
+
+  const tips = [
+    {
+      title: "Classical vs Modern Ciphers",
+      content: "Classical ciphers (Caesar, Vigenère, etc.) are easily broken and should only be used for education. Modern ciphers like AES provide real security.",
+    },
+    {
+      title: "Transposition vs Substitution",
+      content: "Substitution ciphers replace letters (Caesar, Vigenère). Transposition ciphers rearrange letters (Rail Fence).",
+    },
+    {
+      title: "Password Security",
+      content: "Use long, random passwords with mixed character types. Consider passphrases for better memorability.",
+    },
+    {
+      title: "Hash vs Encryption",
+      content: "Hashing is one-way (irreversible), encryption is two-way (reversible with the key).",
+    },
+    {
+      title: "Key Management",
+      content: "The security of any encryption is only as strong as the protection of its keys.",
+    },
+    {
+      title: "Modern Cryptography",
+      content: "Always use well-established, peer-reviewed algorithms. Never roll your own crypto.",
+    },
+    {
+      title: "Frequency Analysis",
+      content: "Simple substitution ciphers can be broken using frequency analysis of letters in the ciphertext.",
+    },
+    {
+      title: "Mathematical Ciphers",
+      content: "Affine ciphers use mathematical operations. The 'a' parameter must be coprime with the alphabet size (26).",
+    },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <div className="bg-gray-900 border border-green-500/30 rounded-lg p-6">
+        <h2 className="text-xl font-bold text-green-400 mb-6 font-mono">
+          Cryptography Information
+        </h2>
+
+        {/* Algorithms */}
+        <div className="mb-8">
+          <h3 className="text-lg font-bold text-green-400 mb-4 font-mono">
+            Algorithms & Methods
+          </h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {algorithms.map((algo) => (
+              <div key={algo.name} className="bg-black border border-green-500/30 rounded-lg p-4">
+                <div className="flex items-start justify-between mb-2">
+                  <h4 className="font-mono font-bold text-green-400">
+                    {algo.name}
+                  </h4>
+                  <span className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded font-mono">
+                    {algo.type}
+                  </span>
+                </div>
+                
+                <p className="text-green-300 text-sm mb-3 leading-relaxed">
+                  {algo.description}
+                </p>
+                
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Security:</span>
+                    <span className={`font-mono ${algo.securityColor}`}>
+                      {algo.security}
+                    </span>
+                  </div>
+                  
+                  <div>
+                    <span className="text-gray-400">Use Case:</span>
+                    <span className="text-green-300 ml-2">
+                      {algo.useCase}
+                    </span>
+                  </div>
+                  
+                  <div className="mt-3 p-2 bg-gray-800 rounded">
+                    <span className="text-gray-400 text-xs">Example:</span>
+                    <div className="text-green-300 font-mono text-xs mt-1">
+                      {algo.example}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Security Tips */}
+        <div>
+          <h3 className="text-lg font-bold text-green-400 mb-4 font-mono">
+            Security Tips & Concepts
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {tips.map((tip, index) => (
+              <div key={index} className="bg-black border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-mono font-bold text-blue-400 mb-2">
+                  {tip.title}
+                </h4>
+                <p className="text-blue-200 text-sm leading-relaxed">
+                  {tip.content}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="mt-8 bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4">
+          <h4 className="font-mono font-bold text-yellow-400 mb-2">
+            ⚠️ Educational Purpose Disclaimer
+          </h4>
+          <p className="text-yellow-200 text-sm leading-relaxed">
+            This tool is designed for educational purposes and experimentation. 
+            For production security needs, always use established cryptographic libraries 
+            and consult with security professionals. Never use classical ciphers 
+            (Caesar, Vigenère, Atbash, ROT13, Rail Fence, Playfair, Substitution, Affine) 
+            for actual security purposes - they can be easily broken with modern techniques.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

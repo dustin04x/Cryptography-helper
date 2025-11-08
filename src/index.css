@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-light: #000000;
+  --color-dark: #00FF00;
+}
+
+.accent-text {
+  @apply text-green-400;
+}
+
+body {
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    "Consolas",
+    "Monaco",
+    "Courier New",
+    monospace;
+  color: #00FF00;
+  background: #000000;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00FF00;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00CC00;
+}
+
+/* Custom animations */
+@keyframes glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 15px #00FF00;
+    text-shadow: 0 0 5px #00FF00;
+  }
+  50% { 
+    box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+    text-shadow: 0 0 10px #00FF00;
+  }
+}
+
+.glow-animation {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Matrix-style text effect */
+@keyframes matrix {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.matrix-text {
+  animation: matrix 0.8s ease-out;
+}
+
+/* Enhanced glass morphism effects */
+.glass-card {
+  @apply bg-gray-900/70 backdrop-blur-md border border-green-500/30 rounded-lg shadow-xl shadow-green-500/5;
+}
+
+.glass-card:hover {
+  @apply border-green-500/50 shadow-2xl shadow-green-500/10;
+}
+
+/* Auth input field styling for dark theme */
+.auth-input-field {
+  @apply w-full px-4 py-3 rounded bg-black/80 backdrop-blur-sm border border-green-500/30 text-green-300 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all shadow-sm hover:border-green-500/50;
+}
+
+/* Auth button styling for dark theme */
+.auth-button {
+  @apply w-full px-4 py-3 rounded bg-green-500/90 backdrop-blur-sm text-black font-bold hover:bg-green-400/90 transition-colors shadow-sm hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-green-500/90 backdrop-blur-sm text-black font-mono font-bold hover:bg-green-400/90 transition-colors shadow-md hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-gray-700/80 backdrop-blur-sm text-green-400 font-mono hover:bg-gray-600/80 transition-colors;
+}
+
+.btn-danger {
+  @apply bg-red-900/80 backdrop-blur-sm text-red-300 font-mono hover:bg-red-800/80 transition-colors;
+}
+
+/* Card styles */
+.crypto-card {
+  @apply bg-gray-900/70 backdrop-blur-md border border-green-500/30 rounded-lg p-6 hover:border-green-500/50 transition-colors shadow-xl shadow-green-500/5;
+}
+
+/* Input styles */
+.crypto-input {
+  @apply w-full bg-black/80 backdrop-blur-sm border border-green-500/30 rounded-lg p-3 text-green-300 font-mono focus:border-green-500 focus:outline-none transition-colors;
+}
+
+.crypto-textarea {
+  @apply w-full bg-black/80 backdrop-blur-sm border border-green-500/30 rounded-lg p-3 text-green-300 font-mono resize-none focus:border-green-500 focus:outline-none transition-colors;
+}
+
+/* Result box styles */
+.result-box {
+  @apply bg-black/80 backdrop-blur-sm border border-green-500 rounded-lg p-4 font-mono text-green-300 whitespace-pre-wrap break-all;
+}
+
+/* Hacker terminal effect */
+.terminal-text {
+  @apply font-mono text-green-400;
+}
+
+.terminal-prompt::before {
+  content: "> ";
+  @apply text-green-500;
+}
+
+/* Loading animation */
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading-pulse {
+  animation: pulse-green 1.5s ease-in-out infinite;
+}
+
+/* Responsive grid for frequency analyzer */
+.grid-cols-13 {
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+}
+
+@media (max-width: 768px) {
+  .grid-cols-13 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+/* Custom focus styles */
+input:focus, textarea:focus, button:focus {
+  outline: 2px solid #00FF00;
+  outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+  background: #00FF00;
+  color: #000000;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Enhanced backdrop blur for better readability over animated background */
+.content-overlay {
+  @apply bg-black/60 backdrop-blur-md;
+}
+
+/* Floating animation for cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Cyber grid effect */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}

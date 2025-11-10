@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { toast } from "sonner";
 import { 
   caesarCipher, 
@@ -145,7 +145,7 @@ export function TextEncryption() {
     toast.info("Cleared all fields");
   };
 
-  const ciphers = [
+  const ciphers = useMemo(() => [
     { id: "caesar", name: "Caesar", desc: "Shift letters by N positions", needsKey: true, keyType: "number" },
     { id: "vigenere", name: "Vigenère", desc: "Polyalphabetic substitution", needsKey: true, keyType: "text" },
     { id: "aes", name: "AES", desc: "Advanced Encryption Standard", needsKey: true, keyType: "text" },
@@ -157,9 +157,9 @@ export function TextEncryption() {
     { id: "affine", name: "Affine", desc: "Mathematical linear cipher", needsKey: true, keyType: "number", needsKey2: true },
     { id: "morse", name: "Morse Code", desc: "Dots and dashes", needsKey: false },
     { id: "binary", name: "Binary", desc: "8-bit binary encoding", needsKey: false },
-  ];
+  ], []);
 
-  const currentCipher = ciphers.find(c => c.id === cipherType);
+  const currentCipher = useMemo(() => ciphers.find(c => c.id === cipherType), [ciphers, cipherType]);
 
   return (
     <div className="space-y-6">

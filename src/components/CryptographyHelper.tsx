@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { TextEncryption } from "./TextEncryption";
-import { HashGenerator } from "./HashGenerator";
-import { Base64Tool } from "./Base64Tool";
-import { FrequencyAnalyzer } from "./FrequencyAnalyzer";
-import { PasswordChecker } from "./PasswordChecker";
-import { InfoSection } from "./InfoSection";
+import { useState, lazy, Suspense } from "react";
+
+// Lazy load components for better performance
+const TextEncryption = lazy(() => import("./TextEncryption").then(m => ({ default: m.TextEncryption })));
+const HashGenerator = lazy(() => import("./HashGenerator").then(m => ({ default: m.HashGenerator })));
+const Base64Tool = lazy(() => import("./Base64Tool").then(m => ({ default: m.Base64Tool })));
+const FrequencyAnalyzer = lazy(() => import("./FrequencyAnalyzer").then(m => ({ default: m.FrequencyAnalyzer })));
+const PasswordChecker = lazy(() => import("./PasswordChecker").then(m => ({ default: m.PasswordChecker })));
+const InfoSection = lazy(() => import("./InfoSection").then(m => ({ default: m.InfoSection })));
 
 type Tab = "encrypt" | "hash" | "base64" | "frequency" | "password" | "info";
 
@@ -44,12 +46,18 @@ export function CryptographyHelper() {
 
       {/* Content */}
       <div className="min-h-[600px]">
-        {activeTab === "encrypt" && <TextEncryption />}
-        {activeTab === "hash" && <HashGenerator />}
-        {activeTab === "base64" && <Base64Tool />}
-        {activeTab === "frequency" && <FrequencyAnalyzer />}
-        {activeTab === "password" && <PasswordChecker />}
-        {activeTab === "info" && <InfoSection />}
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-96">
+            <div className="text-green-400 font-mono animate-pulse">Loading...</div>
+          </div>
+        }>
+          {activeTab === "encrypt" && <TextEncryption />}
+          {activeTab === "hash" && <HashGenerator />}
+          {activeTab === "base64" && <Base64Tool />}
+          {activeTab === "frequency" && <FrequencyAnalyzer />}
+          {activeTab === "password" && <PasswordChecker />}
+          {activeTab === "info" && <InfoSection />}
+        </Suspense>
       </div>
 
       {/* Footer */}

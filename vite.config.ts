@@ -4,8 +4,34 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  // 👇 This is the only key change — tells Vite where the app will be served
+  // Base path for GitHub Pages
   base: "/Cryptography-helper/",
+
+  // Build optimizations
+  build: {
+    // Enable minification
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: mode === 'production',
+        drop_debugger: true,
+      },
+    },
+    // Chunk size optimizations
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate vendor chunks for better caching
+          'react-vendor': ['react', 'react-dom'],
+          'crypto-utils': ['./src/utils/crypto'],
+        },
+      },
+    },
+    // Target modern browsers for smaller bundles
+    target: 'esnext',
+    // Enable source maps for production debugging (optional)
+    sourcemap: false,
+  },
 
   plugins: [
     react(),
